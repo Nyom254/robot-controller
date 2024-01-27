@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { useEffect, useState } from "react";
 import Slider from '@react-native-community/slider';
-import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import { GestureDetector, Gesture, GestureHandlerRootView, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function App() {
   // orientation
@@ -39,110 +39,110 @@ export default function App() {
         })
     } else if (robotCommand === 'B') {
       fetch(`http://${ipAddress}:80/?State=B`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     } else if (robotCommand === "L") {
       fetch(`http://${ipAddress}:80/?State=L`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === "R") {
       fetch(`http://${ipAddress}:80/?State=R`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === "FR") {
       fetch(`http://${ipAddress}:80/?State=I`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === "FL") {
       fetch(`http://${ipAddress}:80/?State=G`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === "BR") {
       fetch(`http://${ipAddress}:80/?State=J`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === "BL") {
       fetch(`http://${ipAddress}:80/?State=H`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === 0) {
       fetch(`http://${ipAddress}:80/?State=0`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === 1) {
       fetch(`http://${ipAddress}:80/?State=1`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === 2) {
       fetch(`http://${ipAddress}:80/?State=2`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === 3) {
       fetch(`http://${ipAddress}:80/?State=3`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === 4) {
       fetch(`http://${ipAddress}:80/?State=4`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === 5) {
       fetch(`http://${ipAddress}:80/?State=5`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === 6) {
       fetch(`http://${ipAddress}:80/?State=6`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === 7) {
       fetch(`http://${ipAddress}:80/?State=7`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === 8) {
       fetch(`http://${ipAddress}:80/?State=8`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === 9) {
       fetch(`http://${ipAddress}:80/?State=9`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
     else if (robotCommand === "S") {
       fetch(`http://${ipAddress}:80/?State=S`)
-      .catch(error => {
-        setRobotCommand(`${error}`)
-      })
+        .catch(error => {
+          setRobotCommand(`${error}`)
+        })
     }
   }, [robotCommand])
 
@@ -188,10 +188,46 @@ export default function App() {
     setControl((prevControls) => ({ ...prevControls, [control]: false }));
   };
 
+  const forwardGesture = Gesture.LongPress()
+    .maxDistance(100)
+    .minDuration(0)
+    .onTouchesDown(() => {
+      handleControlPress("forward")
+    })
+    .onFinalize(() => {
+      handleControlRelease("forward")
+    })
+  const backwardGesture = Gesture.LongPress()
+    .maxDistance(100)
+    .minDuration(0)
+    .onTouchesDown(() => {
+      handleControlPress("backward")
+    })
+    .onFinalize(() => {
+      handleControlRelease("backward")
+    })
+  const leftGesture = Gesture.LongPress()
+    .maxDistance(100)
+    .minDuration(0)
+    .onTouchesDown(() => {
+      handleControlPress("left")
+    })
+    .onFinalize(() => {
+      handleControlRelease("left")
+    })
+  const rightGesture = Gesture.LongPress()
+    .maxDistance(100)
+    .minDuration(0)
+    .onTouchesDown(() => {
+      handleControlPress("right")
+    })
+    .onFinalize(() => {
+      handleControlRelease("right")
+    })
 
 
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <Text>IP Address</Text>
       <TextInput
         style={styles.ipInput}
@@ -214,24 +250,24 @@ export default function App() {
             justifyContent: 'center',
           }}
         >
-          <View
-            style={[styles.button, { marginBottom: 50 },]}
-            onTouchStart={() => handleControlPress("forward")}
-            onTouchEnd={() => handleControlRelease("forward")}
-          >
-            <Text
-              style={{ color: 'white' }}
-            >Forward</Text>
-          </View>
-          <View
-            style={[styles.button, { marginBottom: 50 },]}
-            onTouchStart={() => handleControlPress("backward")}
-            onTouchEnd={() => handleControlRelease("backward")}
-          >
-            <Text
-              style={{ color: 'white' }}
-            >Back</Text>
-          </View>
+          <GestureDetector gesture={forwardGesture}>
+            <View
+              style={[styles.button, { marginBottom: 50 },]}
+            >
+              <Text
+                style={{ color: 'white' }}
+              >Forward</Text>
+            </View>
+          </GestureDetector>
+          <GestureDetector gesture={backwardGesture}>
+            <View
+              style={[styles.button, { marginBottom: 50 },]}
+            >
+              <Text
+                style={{ color: 'white' }}
+              >Back</Text>
+            </View>
+          </GestureDetector>
         </View>
         <View
           style={{
@@ -241,29 +277,29 @@ export default function App() {
             alignItems: 'center',
           }}
         >
-          <View
-            style={[styles.button, { marginBottom: 50 },]}
-            onTouchStart={() => handleControlPress("left")}
-            onTouchEnd={() => handleControlRelease("left")}
-          >
-            <Text
-              style={{ color: 'white' }}
-            >Left</Text>
-          </View>
-          <View
-            style={[styles.button, { marginBottom: 50 },]}
-            onTouchStart={() => handleControlPress("right")}
-            onTouchEnd={() => handleControlRelease("right")}
-          >
-            <Text
-              style={{ color: 'white' }}
-            >Right</Text>
-          </View>
+          <GestureDetector gesture={leftGesture}>
+            <View
+              style={[styles.button, { marginBottom: 50 },]}
+            >
+              <Text
+                style={{ color: 'white' }}
+              >Left</Text>
+            </View>
+          </GestureDetector>
+          <GestureDetector gesture={rightGesture}>
+            <View
+              style={[styles.button, { marginBottom: 50 },]}
+            >
+              <Text
+                style={{ color: 'white' }}
+              >Right</Text>
+            </View>
+          </GestureDetector>
         </View>
       </View>
       <Slider
         style={{
-          width: '60%', 
+          width: '60%',
           height: 20,
           marginTop: -50,
           marginBottom: 15,
@@ -274,10 +310,10 @@ export default function App() {
         step={1}
         minimumTrackTintColor="black"
         maximumTrackTintColor="gray"
-        onSlidingComplete={(speed) => {setCarSpeed(speed), setRobotCommand(speed)}}
+        onSlidingComplete={(speed) => { setCarSpeed(speed), setRobotCommand(speed) }}
       />
       <StatusBar style='light' />
-    </View>
+    </GestureHandlerRootView>
   );
 }
 const styles = StyleSheet.create({
