@@ -31,115 +31,115 @@ export default function App() {
     right: false,
   })
 
-  useEffect(() => {
+  useEffect( async () => {
     if (robotCommand === 'F') {
-      fetch(`http://${ipAddress}:80/?State=F`)
+      await fetch(`http://${ipAddress}:80/?State=F`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     } else if (robotCommand === 'B') {
-      fetch(`http://${ipAddress}:80/?State=B`)
+      await fetch(`http://${ipAddress}:80/?State=B`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     } else if (robotCommand === "L") {
-      fetch(`http://${ipAddress}:80/?State=L`)
+      await fetch(`http://${ipAddress}:80/?State=L`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === "R") {
-      fetch(`http://${ipAddress}:80/?State=R`)
+      await fetch(`http://${ipAddress}:80/?State=R`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === "FR") {
-      fetch(`http://${ipAddress}:80/?State=I`)
+      await fetch(`http://${ipAddress}:80/?State=I`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === "FL") {
-      fetch(`http://${ipAddress}:80/?State=G`)
+      await fetch(`http://${ipAddress}:80/?State=G`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === "BR") {
-      fetch(`http://${ipAddress}:80/?State=J`)
+      await fetch(`http://${ipAddress}:80/?State=J`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === "BL") {
-      fetch(`http://${ipAddress}:80/?State=H`)
+      await fetch(`http://${ipAddress}:80/?State=H`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === 0) {
-      fetch(`http://${ipAddress}:80/?State=0`)
+      await fetch(`http://${ipAddress}:80/?State=0`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === 1) {
-      fetch(`http://${ipAddress}:80/?State=1`)
+      await fetch(`http://${ipAddress}:80/?State=1`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === 2) {
-      fetch(`http://${ipAddress}:80/?State=2`)
+      await fetch(`http://${ipAddress}:80/?State=2`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === 3) {
-      fetch(`http://${ipAddress}:80/?State=3`)
+      await fetch(`http://${ipAddress}:80/?State=3`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === 4) {
-      fetch(`http://${ipAddress}:80/?State=4`)
+      await fetch(`http://${ipAddress}:80/?State=4`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === 5) {
-      fetch(`http://${ipAddress}:80/?State=5`)
+      await fetch(`http://${ipAddress}:80/?State=5`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === 6) {
-      fetch(`http://${ipAddress}:80/?State=6`)
+      await fetch(`http://${ipAddress}:80/?State=6`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === 7) {
-      fetch(`http://${ipAddress}:80/?State=7`)
+      await fetch(`http://${ipAddress}:80/?State=7`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === 8) {
-      fetch(`http://${ipAddress}:80/?State=8`)
+      await fetch(`http://${ipAddress}:80/?State=8`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === 9) {
-      fetch(`http://${ipAddress}:80/?State=9`)
+      await fetch(`http://${ipAddress}:80/?State=9`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
     }
     else if (robotCommand === "S") {
-      fetch(`http://${ipAddress}:80/?State=S`)
+      await fetch(`http://${ipAddress}:80/?State=S`)
         .catch(error => {
           setRobotCommand(`${error}`)
         })
